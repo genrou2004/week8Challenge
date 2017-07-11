@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meme Maker</title>
+    <th:block th:replace="base :: head"></th:block>
+</head>
+<body>
+<th:block th:replace="base :: navbar"></th:block><br/><br/><br/><br/>
+
+    <div class="container">
+
+        <form th:object="${meme}" method="POST" action="/new_meme">
+            <label for="top">Top Caption<mark><strong><span th:if="${#fields.hasErrors('top')}" th:errors="*{top}">Top Error</span></strong></mark></label>
+            <input th:field="*{top}" type="text" placeholder="Top Caption" id="top"/>
+            <br/>
+            <input type="hidden" th:value="${meme.imageUrl}"  name="imageUrl"/>
+            <th:block th:utext="${meme.imageUrl}"></th:block>
+            <br/>
+            <label for="bottom">Bottom Caption<mark><strong><span th:if="${#fields.hasErrors('bottom')}" th:errors="*{bottom}">Bottom Error</span></strong></mark></label>
+            <input th:field="*{bottom}" type="text" placeholder="Bottom Caption" id="bottom"/>
+            <br/>
+            <input type="submit" value="Make the meme"/>
+        </form>
+
+    </div>
+
+</body>
+</html>
