@@ -47,4 +47,12 @@ public class Image {
         this.imgname = imgname;
     }
 
+
+    /*
+    cloudinary.image("smartphone.png", {
+  underlay: "site_bg.jpg",
+  width: 80, height: 80, effect: "brightness:100",
+  transformation: {crop: 'fill', height: 80, width: 80 }
+});*/
+
 }
